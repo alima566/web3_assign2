@@ -29,3 +29,10 @@ export const portfolioSummary = (req, res) => {
     });
   });
 };
+
+export const portfolioInfo = (req, res) => {
+  Portfolio.find({ 'user': req.params.id }, 'id symbol owned').exec((err, items) => {
+    if (err) res.status(400).end("Cound not retrieve User portfolio summary");
+    res.json(items);
+  });
+};
