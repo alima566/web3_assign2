@@ -8,7 +8,7 @@ class Breadcrumb extends Component {
       let rootPath = location.pathname.split('/')[1];
       let rootLabel = rootPath.replace(/(^|\s)\S/g, char => char.toUpperCase());
       let isSecondLevel = this.props.match.path.includes(':');
-      
+
         return (
            <nav className={`navbar breadcrumb has-shadow ${this.props.type || ''}`} aria-label="breadcrumbs">
               <div className="navbar-item is-fluid">
