@@ -62,7 +62,7 @@ class AboutUs extends Component {
                     </div>
                 </div>
                 <div className="content">
-                  Aaron is a fourth year Computer Information Systems Student at <a href="http://www.mtroyal.ca/" target="_blank" rel="noopener noreferrer">Mount Royal University</a>.
+                  Aaron is a fourth year Computer Information Systems Student at <a href="http://www.mtroyal.ca/" target="_blank" rel="noopener noreferrer">Mount Royal University</a>. His interests and areas of concentration includes both software and web development, and big data.
                 </div>
               </div>
             </div>
