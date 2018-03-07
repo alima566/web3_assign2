@@ -50,7 +50,7 @@ class AboutUs extends Component {
                 </div>
                 <div className="media">
                     <div className="media-left">
-                    <a href="https://www.linkedin.com/in/aaronlimai/" target="_blank" rel="noopener noreferrer">
+                    <a href="http://www.limai.ca" target="_blank" rel="noopener noreferrer">
                       <figure className="avatar image is-64x64">
                         <img src="http://www.limai.ca/img/Me.png" alt="User" />
                       </figure>
