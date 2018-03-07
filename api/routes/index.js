@@ -12,4 +12,11 @@ router.route('/').get((req, res) => res.end('API Initialized'));
 router.route('/companies')
       .get(companyController.getAll);
 
+router.route('/company/:symbol')
+      .get(companyController.getSingle);
+
+//User Routes
+router.route('/user/login')
+      .post(userController.login);
+
 export default router;
