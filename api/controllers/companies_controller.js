@@ -9,7 +9,7 @@ export const getAll = (req, res) => {
 }
 
 export const getSingle = (req, res) => {
-  Company.findOne({ 'symbol': req.params.symbol }).exec((err, company) => {
+  Company.findOne({ 'symbol': req.params.symbol.toUpperCase() }).exec((err, company) => {
     if(err) return res.status(400).json({'success':false,'message': err.message });
     return res.json(company);
   });
