@@ -19,4 +19,10 @@ router.route('/company/:symbol')
 router.route('/user/login')
       .post(userController.login);
 
+router.route('/user/:id/summary')
+      .get(userController.portfolioSummary);
+
+router.route('/user/:id/portfolio')
+      .get(userController.portfolioInfo);
+
 export default router;

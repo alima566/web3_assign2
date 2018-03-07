@@ -7,4 +7,4 @@ var portfolioSchema = mongoose.Schema({
   owned: Number
 });
 
-export default mongoose.model('prices', portfolioSchema);
+export default mongoose.model('Portfolio', portfolioSchema, 'portfolio');

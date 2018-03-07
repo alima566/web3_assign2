@@ -1,3 +1,6 @@
 node_modules/
+<<<<<<< HEAD
 api/.DS_Store
+=======
+>>>>>>> f816332344dc759e2deb04648e57ba35e768e89c
 .DS_Store
