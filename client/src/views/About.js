@@ -36,10 +36,37 @@ class AboutUs extends Component {
                     </div>
                 </div>
                 <div className="content">
-                  Renato is a fourth year Computer Information Systems Student at <a href="http://www.mtroyal.ca/" target="_blank" rel="noopener noreferrer">Mount Royal University.</a> As an aspiring Full Stack Developer, he created an iOS application in his second year of University to address the difficulty in finding student discounts in a local context. Using his various experiences on both the front and back end, he created this Stock platform for COMP 4513.  
+                  Renato is a fourth year Computer Information Systems Student at <a href="http://www.mtroyal.ca/" target="_blank" rel="noopener noreferrer">Mount Royal University.</a> As an aspiring Full Stack Developer, he created an iOS application in his second year of University to address the difficulty in finding student discounts in a local context. Using his various experiences on both the front and back end, he created this Stock platform for COMP 4513.
                 </div>
               </div>
             </div>
+
+            <div className="card">
+              <div className="card-content">
+                <div className="is-pulled-right">
+                  <a href="https://www.linkedin.com/in/aaronlimai/" target="_blank" rel="noopener noreferrer">
+                    <i className="linkedin fab fa-linkedin"></i>
+                  </a>
+                </div>
+                <div className="media">
+                    <div className="media-left">
+                    <a href="https://www.linkedin.com/in/aaronlimai/" target="_blank" rel="noopener noreferrer">
+                      <figure className="avatar image is-64x64">
+                        <img src="http://www.limai.ca/img/Me.png" alt="User" />
+                      </figure>
+                      </a>
+                    </div>
+                    <div className="media-content">
+                      <p className="title is-5">Aaron Li-Mai</p>
+                      <p className="subtitle is-5">@alima566</p>
+                    </div>
+                </div>
+                <div className="content">
+                  Aaron is a fourth year Computer Information Systems Student at <a href="http://www.mtroyal.ca/" target="_blank" rel="noopener noreferrer">Mount Royal University</a>.
+                </div>
+              </div>
+            </div>
+
             <hr></hr>
             <h2 className="title">Frameworks & Packages Used</h2>
             <div className="tile is-ancestor">
