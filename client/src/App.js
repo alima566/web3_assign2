@@ -7,6 +7,7 @@ import 'bulma/css/bulma.css';
 
 //Components / Views
 import Header from './components/Header.js';
+import Login from './views/Login.js'
 import Home from './views/Home.js';
 import UserList from './views/Users/List.js';
 import SingleUser from './views/Users/Single.js';
