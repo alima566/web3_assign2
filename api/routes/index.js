@@ -15,6 +15,15 @@ router.route('/companies')
 router.route('/company/:symbol')
       .get(companyController.getSingle);
 
+router.route('/company/:symbol/info')
+      .get(companyController.getInfo);
+
+router.route('/company/:symbol/info/close')
+      .get(companyController.getCloseInfo);
+
+router.route('/company/:symbol/info/latest')
+      .get(companyController.getLatestInfo);
+
 //User Routes
 router.route('/user/login')
       .post(userController.login);
