@@ -56,13 +56,15 @@ export const getInfo = (req, res) => {
 };
 
 const getMonthInfo = (req, res) => {
-  return res.end("has month info");
+  Price.find({ date: { $regex: `.*-0?${req.query.month}-.*` }, name: req.params.symbol.toUpperCase() }).sort({"date": 1}).exec((err, prices) => {
+    if(err) return res.status(400).json({'success':false,'message': err.message });
+    	return res.json(prices);
+  });
 };
 
 const getDateInfo = (req, res) => {
   Price.findOne({ date : req.query.date, name: req.params.symbol.toUpperCase() }).exec((err, price) => {
     if(err) return res.status(400).json({'success':false,'message': err.message });
-    console.log(price);
     	return res.json(price);
   });
 };
