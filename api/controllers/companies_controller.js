@@ -20,15 +20,20 @@ export const getSingle = (req, res) => {
 export const getCloseInfo = (req, res) => {
   //return average close value for each month in the year
 	Price.aggregate([
-    { "$group": {
-        "_id": {
-            "year": { $year: "$date" },
-            "month": "$date"
-        }
+    { $match: { name: req.params.symbol.toUpperCase() } },
+    { $group: {
+        "_id": { "month": { $substr: [ "$date", 5, 2 ] } },
+        avgClose: { $avg: "$close" }
     }}
-	]).exec( (err, company) => {
+	]).exec( (err, aggregate) => {
 		if(err) return res.status(400).json({'success':false,'message': err.message });
-    	return res.json(company);
+
+    let close = {};
+    aggregate.sort((a,b) => { a._id.month - b._id.month });
+    aggregate.map(a => {
+      close[parseInt(a._id.month)] = parseFloat((a.avgClose).toFixed(4));
+    });
+    return res.json(close);
 	});
 };
 
