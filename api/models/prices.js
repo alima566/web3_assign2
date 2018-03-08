@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 
 var priceSchema = mongoose.Schema({
-  date: Date,
+  date: String,
   open: Number,
   high: Number,
   low: Number,

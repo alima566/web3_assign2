@@ -18,21 +18,14 @@ export const getSingle = (req, res) => {
 
 //should assume month shall be based on current year's month
 export const getCloseInfo = (req, res) => {
+  //return average close value for each month in the year
 	Price.aggregate([
-		{ $match: { name: req.params.symbol } },
-		// {
-		// 	$lookup: {
-		// 		from: 'companies',
-		// 		localField: 'symbol',
-		// 		foreignField: 'name',
-		// 		as: 'companySymbol'
-		// 	}
-		// },
-    { "$project": {
-        "close": 1,
-        "month": { "$month": new Date("$date") }
-    }},
-		{ $group: { _id : "$month", avgClose: { $avg: "$close" } } }
+    { "$group": {
+        "_id": {
+            "year": { $year: "$date" },
+            "month": "$date"
+        }
+    }}
 	]).exec( (err, company) => {
 		if(err) return res.status(400).json({'success':false,'message': err.message });
     	return res.json(company);
@@ -62,9 +55,7 @@ const getMonthInfo = (req, res) => {
 };
 
 const getDateInfo = (req, res) => {
-  const _date = (new Date(req.query.date)).toISOString();
-  console.log(_date);
-  Price.findOne({ "date" : {$lte: _date} }).exec((err, price) => {
+  Price.findOne({ date : req.query.date, name: req.params.symbol.toUpperCase() }).exec((err, price) => {
     if(err) return res.status(400).json({'success':false,'message': err.message });
     console.log(price);
     	return res.json(price);

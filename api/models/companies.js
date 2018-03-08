@@ -6,7 +6,7 @@ var companySchema = mongoose.Schema({
   sector: String,
   subindustry: String,
   address: String,
-  date_added: Date,
+  date_added: String,
   CIK: Number,
   frequency: Number
 });
