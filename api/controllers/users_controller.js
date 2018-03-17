@@ -1,15 +1,13 @@
 import mongoose from 'mongoose';
 import User from '../models/users';
 import Portfolio from '../models/portfolio';
-import crypto from 'crypto';
+import md5 from 'crypto-md5';
 
 export const login = (req, res) => {
-  const md5 = crypto.createHash("md5");
-  User.findOne({ 'email': req.body.email }, 'id first_name last_name password').exec((err, usr) => {
-    if ( err || !usr || md5.update(req.body.password).digest("hex") !== usr.password )
+  User.findOne({ 'email': req.body.email }, 'id salt first_name last_name password').exec((err, usr) => {
+    if ( err || !usr || md5(`${req.body.password}${usr.salt}`, 'hex') !== usr.password )
       return res.status(401).json( err || {} );
-    usr.password = undefined;
-    return res.json(usr);
+    return res.json({ id: usr.id, first: usr.first_name, last: usr.last_name });
   });
 };
 
