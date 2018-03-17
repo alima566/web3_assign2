@@ -63,9 +63,18 @@ export const getInfo = (req, res) => {
 };
 
 const getMonthInfo = (req, res) => {
-  Price.find({ date: { $regex: `.*-0?${req.query.month}-.*` }, name: req.params.symbol.toUpperCase() }).sort({"date": 1}).exec((err, prices) => {
+  let month = isNaN(req.query.month) ? moment().month(req.query.month).format("M") : req.query.month;
+  Price.find({ date: { $regex: `.*-0?${month}-.*` }, name: req.params.symbol.toUpperCase() }).sort({"date": 1}).exec((err, prices) => {
     if(err) return res.status(400).json({'success':false,'message': err.message });
-    	return res.json(prices);
+      return res.json(prices.map(p => ({
+        date: p.date,
+        volume: p.volume,
+        open: parseFloat(p.open.toFixed(2)),
+        high: parseFloat(p.high.toFixed(2)),
+        low: parseFloat(p.low.toFixed(2)),
+        close: parseFloat(p.close.toFixed(2))
+      }
+    )))
   });
 };
 

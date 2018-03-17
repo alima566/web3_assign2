@@ -63,7 +63,7 @@ class SingleCompany extends Component {
                     </li>
                   </ul>
                 </div>
-                { this.tabIsActive(0) ? <Summary company={this.state.company} /> : <Data /> }
+                { this.tabIsActive(0) ? <Summary company={this.state.company} /> : <Data company={this.state.company} /> }
               </div>
             </div>
           </div>
