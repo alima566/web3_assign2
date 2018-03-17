@@ -1,23 +1,29 @@
 import React, { Component } from 'react';
+import { ResponsiveContainer, BarChart, Bar, Tooltip, XAxis, YAxis } from 'recharts';
 import axios from 'axios';
 
 class CompanySummary extends Component {
   constructor(props){
     super(props);
+    this.state = {
+      closeSummary: []
+    };
   }
 
-  componentDidMount(){
-    // axios.get(`/api/company/${this.props.match.params.symbol}`)
-    // .then((r) => {
-    //   this.setState({ company: r.data });
-    // })
+  componentWillReceiveProps(newprops){
+    if (this.props.company !== newprops.company) {
+      axios.get(`/api/company/${newprops.company.symbol}/info/close`)
+      .then((r) => {
+        this.setState({ closeSummary: r.data });
+      })
+    }
   }
 
   render() {
     let c = this.props.company;
     return (
       <div className="columns">
-        <div className="column is-5">
+        <div className="column is-4">
           <span className="is-size-6 is-block">
             <i className="fas fa-chart-line"></i>
             <strong> Symbol: </strong> { c.symbol }
@@ -34,10 +40,19 @@ class CompanySummary extends Component {
             <i className="fas fa-map-marker-alt"></i>
             <strong> Address: </strong> { c.address }
           </span>
-          <i>Added {c.date_added} </i>
+          <i>{ c.date_added ? `Added ${c.date_added}` : '' }</i>
         </div>
         <div className="column">
-          chart to go here
+          {
+            this.state.closeSummary.length > 0 && <ResponsiveContainer height={300}>
+              <BarChart data={this.state.closeSummary}>
+                <XAxis dataKey="month.short" />
+                <YAxis hide={true}/>
+                <Tooltip />
+                <Bar type="monotone" dataKey="close" barSize={22} fill="#8884d8"/>
+              </BarChart>
+            </ResponsiveContainer>
+          }
         </div>
       </div>
     );

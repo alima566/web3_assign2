@@ -1,6 +1,7 @@
 import mongoose from 'mongoose';
 import Company from '../models/companies';
 import Price from '../models/prices';
+import moment from 'moment';
 
 export const getAll = (req, res) => {
   Company.find({}, 'symbol name').exec((err, companies) => {
@@ -28,12 +29,18 @@ export const getCloseInfo = (req, res) => {
 	]).exec( (err, aggregate) => {
 		if(err) return res.status(400).json({'success':false,'message': err.message });
 
-    let close = {};
-    aggregate.sort((a,b) => { a._id.month - b._id.month });
+    let close = [];
     aggregate.map(a => {
-      close[parseInt(a._id.month)] = parseFloat((a.avgClose).toFixed(4));
+      close.push({
+        close: parseFloat((a.avgClose).toFixed(4)),
+        month: {
+          number: parseInt(a._id.month),
+          short: moment.monthsShort(a._id.month - 1),
+          long: moment.months(a._id.month - 1)
+        }
+      });
     });
-    return res.json(close);
+    return res.json(close.sort((a,b) => a.month.number - b.month.number ));
 	});
 };
 
