@@ -26,7 +26,7 @@ class AboutUs extends Component {
                     <div className="media-left">
                     <a href="https://www.linkedin.com/in/reniro/" target="_blank" rel="noopener noreferrer">
                       <figure className="avatar image is-64x64">
-                        <img src="https://media-exp2.licdn.com/mpr/mpr/shrinknp_400_400/AAEAAQAAAAAAAAz5AAAAJDc4M2FhNjI4LThiYzEtNGIwYi1hNzVkLTg3MTk1OGQ1M2I4Zg.jpg" alt="User" />
+                        <img src="https://media.licdn.com/dms/image/C5603AQHywqYf6lQwiA/profile-displayphoto-shrink_200_200/0?e=1526497200&v=alpha&t=7imgITUv7WU7_5TNiaMnU4X1SQ2a4W8l9l1imX7Ugq0" alt="User" />
                       </figure>
                       </a>
                     </div>
@@ -36,7 +36,7 @@ class AboutUs extends Component {
                     </div>
                 </div>
                 <div className="content">
-                  Renato is a fourth year Computer Information Systems Student at <a href="http://www.mtroyal.ca/" target="_blank" rel="noopener noreferrer">Mount Royal University.</a> As an aspiring Full Stack Developer, he created an iOS application in his second year of University to address the difficulty in finding student discounts in a local context. Using his various experiences on both the front and back end, he created this Stock platform for COMP 4513.
+                  Renato is a fourth year Computer Information Systems Student at <a href="http://www.mtroyal.ca/" target="_blank" rel="noopener noreferrer">Mount Royal University.</a> As an aspiring Full Stack Developer, he created an iOS application in his second year of University to address the difficulty in finding student discounts in the city.
                 </div>
               </div>
             </div>

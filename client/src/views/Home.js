@@ -16,16 +16,22 @@ class Home extends Component {
         </section>
         <section className="section container">
           <div className="columns">
-            <Link to="/users" className="column">
-              <div className="users notification">
-                <h1 className="title is-3">Users</h1>
-                <p className="subtitle is-7">Browse Users in the system</p>
+            <Link to="/" className="column">
+              <div className="portfolio notification">
+                <h1 className="title is-3">Portfolio</h1>
+                <p className="subtitle is-7">View your personal portfolio</p>
               </div>
             </Link>
-            <Link to="/stocks" className="column">
+            <Link to="/" className="column">
+              <div className="company notification">
+                <h1 className="title is-3">Companies</h1>
+                <p className="subtitle is-7">Browse Companies in the system</p>
+              </div>
+            </Link>
+            <Link to="/" className="column">
               <div className="stocks notification">
-                <h1 className="title is-3">Stocks</h1>
-                <p className="subtitle is-7">Browse available Stock options</p>
+                <h1 className="title is-3">Stock Visializer</h1>
+                <p className="subtitle is-7">Easily visualize your Stock options</p>
               </div>
             </Link>
             <Link to="/about" className="column">
