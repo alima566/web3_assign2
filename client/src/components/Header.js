@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const routes = [
   { name: 'Home', path: '/', icon: 'fas fa-home' },
   { name: 'Users', path: '/users', icon: 'fas fa-users' },
-  { name: 'Stocks', path: '/stocks', icon: 'fas fa-chart-line' },
+  { name: 'Companies', path: '/companies', icon: 'far fa-building' },
   { name: 'About', path: '/about', icon: 'fas fa-info-circle' }
 ];
 

@@ -22,7 +22,7 @@ class Home extends Component {
                 <p className="subtitle is-7">View your personal portfolio</p>
               </div>
             </Link>
-            <Link to="/" className="column">
+            <Link to="/companies" className="column">
               <div className="company notification">
                 <h1 className="title is-3">Companies</h1>
                 <p className="subtitle is-7">Browse Companies in the system</p>

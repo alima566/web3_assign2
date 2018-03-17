@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { withRouter } from 'react-router';
+import pluralize from 'pluralize';
 
 class Breadcrumb extends Component {
   render() {
@@ -15,7 +16,7 @@ class Breadcrumb extends Component {
                 <ul>
                   <li><Link to="/">Home</Link></li>
                   <li className={`${ !isSecondLevel ? 'is-active' : ''}`}><Link to={`/${rootPath}`}>{ rootLabel }</Link></li>
-                  { isSecondLevel && <li className="is-active"><Link to={ location.pathname }>{ rootLabel.substring(0, rootLabel.length - 1) }</Link></li> }
+                  { isSecondLevel && <li className="is-active"><Link to={ location.pathname }>{ pluralize.singular(rootLabel) }</Link></li> }
                 </ul>
               </div>
             </nav>

@@ -1,45 +1,51 @@
 import React, { Component } from 'react';
 import Breadcrumb from '../../components/Breadcrumb.js';
-import stocksMaster from '../../data/stocks.json';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
-class StockList extends Component {
+class CompanyList extends Component {
   constructor(props){
     super(props);
     this.state = {
-      stocks: stocksMaster.sort((a, b) => a.symbol.localeCompare(b.symbol))
+      companies: []
     };
   }
-  
-    
+
+  componentDidMount(){
+    axios.get('/api/companies')
+    .then((r) => {
+      this.setState({ companies: r.data.sort((a, b) => a.symbol.localeCompare(b.symbol)) });
+    })
+  }
+
   render() {
     return (
-      <div className="stock-list">
-        <section className="hero is-danger is-bold">
+      <div className="company-list">
+        <section className="hero is-warning is-bold">
           <div className="hero-body">
             <div className="container">
-              <i className="fas fa-chart-line fa-7x is-pulled-right"></i>
-              <h1 className="title">Stocks List</h1>
+              <i className="far fa-building fa-7x is-pulled-right"></i>
+              <h1 className="title">Browse Companies</h1>
             </div>
           </div>
         </section>
-        
+
         <Breadcrumb />
-        
+
         <section className="section container">
           {
-              this.state.stocks.map(s => {
-                  return <Link to={`/stocks/${s.symbol}`} key={s.symbol}>
+              this.state.companies.map(c => {
+                  return <Link to={`/companies/${c.symbol}`} key={c.symbol}>
                       <div className="box">
                         <div className="columns is-mobile">
                           <div className="column is-one-quarter-desktop is-half-mobile">
                             <figure className="image">
-                              <img src={`/logos/${s.symbol}.svg`} alt="Company Logo" />
+                              <img src={`/logos/${c.symbol}.svg`} alt="Company Logo" />
                             </figure>
                           </div>
                           <div className="column"> </div>
                           <div className="column is-5">
-                            <h3 className="subtitle is-3 is-pulled-right">{s.symbol}</h3>
+                            <h3 className="subtitle is-3 is-pulled-right">{c.symbol}</h3>
                           </div>
                         </div>
                       </div>
@@ -52,4 +58,4 @@ class StockList extends Component {
   }
 }
 
-export default StockList;
+export default CompanyList;

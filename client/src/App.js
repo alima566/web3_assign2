@@ -11,8 +11,8 @@ import Login from './views/Login.js'
 import Home from './views/Home.js';
 import UserList from './views/Users/List.js';
 import SingleUser from './views/Users/Single.js';
-import StockList from './views/Stocks/List.js';
-import SingleStock from './views/Stocks/Single.js';
+import CompanyList from './views/Company/List.js';
+import SingleCompany from './views/Company/Single.js';
 import AboutUs from './views/About.js';
 
 class App extends Component {
@@ -24,8 +24,8 @@ class App extends Component {
             <Route path="/" exact component={Home} />
             <Route path="/users" exact component={UserList} />
             <Route path="/users/:id" exact component={SingleUser} />
-            <Route path="/stocks" exact component={StockList} />
-            <Route path="/stocks/:symbol" exact component={SingleStock} />
+            <Route path="/companies" exact component={CompanyList} />
+            <Route path="/companies/:symbol" exact component={SingleCompany} />
             <Route path="/about" exact component={AboutUs} />
             <Route path="/login" exact component={Login} />
           </main>

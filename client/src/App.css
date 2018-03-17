@@ -27,14 +27,24 @@ body {
     padding-top: 5.5vh;
 }
 
-.stock-list figure.image img {
+.company-list figure.image img {
     width: auto;
     max-height: 80px;
     margin: 10px;
 }
 
-.stock-list .box {
+.company-list .box {
     margin-bottom: 12px;
+}
+
+.single-company figure.image {
+  margin: 10px;
+  margin-top: 30px;
+  margin-bottom: 40px;
+}
+
+.single-company p.title {
+  margin-bottom: 15px;
 }
 
 .user-list div.person, .resource-list div {
