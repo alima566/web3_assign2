@@ -1,43 +1,54 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      loggedIn: false,
-      username: '',
+      email: 'mdanelutv@wix.com',
       password: ''
     }
   }
 
+  login = (e) => {
+    e.preventDefault();
+    axios.post('/api/user/login', this.state)
+    .then((r) => {
+      localStorage.setItem("user", JSON.stringify(r.data));
+      this.props.history.push("/");
+    }, (e) => {
+      console.error(e);
+    });
+  }
+
   render() {
     return (
-      <div>
-        <div className="field">
-          <p className="control has-icons-left has-icons-right">
-            <input className="input" type="email" placeholder="Username" />
-            <span className="icon is-small is-left">
-              <i className="fas fa-user"></i>
-            </span>
-          </p>
-        </div>
+      <section className="hero is-fullheight">
+    <div className="hero-body">
+      <div className="container has-text-centered">
+        <div className="column is-4 is-offset-4">
+          <h3 className="title has-text-grey">Login</h3>
+          <p className="subtitle has-text-grey">Please login to proceed.</p>
+          <div className="box">
+            <form onSubmit={this.login}>
+              <div className="field">
+                <div className="control">
+                  <input defaultValue={ this.state.email } onChange={ (e) => this.setState({ email: e.target.value }) } className="input is-large" type="email" placeholder="Your Email" />
+                </div>
+              </div>
 
-        <div className="field">
-          <p className="control has-icons-left">
-            <input className="input" type="password" placeholder="Password" />
-            <span className="icon is-small is-left">
-              <i className="fas fa-lock"></i>
-            </span>
-          </p>
-        </div>
-
-        <div className="field">
-          <p className="control">
-            <button className="button is-success">Login</button>
-          </p>
+              <div className="field">
+                <div className="control">
+                  <input onChange={ (e) => this.setState({ password: e.target.value }) } className="input is-large" type="password" placeholder="Your Password" />
+                </div>
+              </div>
+              <button className="button is-block is-info is-large is-fullwidth" disabled={ this.state.password.length === 0 || this.state.email.length === 0 }>Login</button>
+            </form>
+          </div>
         </div>
       </div>
+    </div>
+  </section>
     );
   }
 }
