@@ -7,7 +7,10 @@ export const login = (req, res) => {
   User.findOne({ 'email': req.body.email }, 'id salt first_name last_name password').exec((err, usr) => {
     if ( err || !usr || md5(`${req.body.password}${usr.salt}`, 'hex') !== usr.password )
       return res.status(401).json( err || {} );
-    return res.json({ id: usr.id, first: usr.first_name, last: usr.last_name });
+
+    const _usr = { id: usr.id, first: usr.first_name, last: usr.last_name };
+    req.app.get('socketio').sockets.emit('user_logged_in', _usr);
+    return res.json(_usr);
   });
 };
 
