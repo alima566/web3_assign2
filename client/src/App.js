@@ -27,6 +27,7 @@ class App extends Component {
             <Route path="/stocks" exact component={StockList} />
             <Route path="/stocks/:symbol" exact component={SingleStock} />
             <Route path="/about" exact component={AboutUs} />
+            <Route path="/login" exact component={Login} />
           </main>
         </div>
     );
