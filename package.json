@@ -6,9 +6,21 @@
     "server": "cd server && node index.js",
     "server-dev": "cd server && nodemon index.js",
     "dev": "concurrently --kill-others-on-fail \"npm run server-dev\" \"npm run client\"",
-    "heroku": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\""
+    "start": "node server",
+    "heroku-postbuild": "cd client/ && npm install && npm install --only=dev --no-shrinkwrap && npm run build"
+  },
+  "dependencies": {
+    "express": "^4.14.1"
   },
   "devDependencies": {
     "concurrently": "^3.5.0"
+  },
+  "cacheDirectories": [
+    "node_modules",
+    "server/node_modules",
+    "client/node_modules"
+  ],
+  "engines": {
+    "node": "8.9.x"
   }
 }
