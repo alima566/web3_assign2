@@ -1,1 +1,1 @@
-web: npm run heroku
+api: node server/index.js
