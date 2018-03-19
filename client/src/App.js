@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
 
 //CSS
 import './App.css';
@@ -29,6 +30,7 @@ class App extends Component {
             <Route path="/about" exact component={AboutUs} />
             <Route path="/login" exact component={Login} />
           </main>
+          <ToastContainer />
         </div>
     );
   }

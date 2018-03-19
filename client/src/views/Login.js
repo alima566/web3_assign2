@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { toast } from 'react-toastify';
 import axios from 'axios';
 
 class Login extends Component {
@@ -17,7 +18,7 @@ class Login extends Component {
       localStorage.setItem("user", JSON.stringify(r.data));
       this.props.history.push("/");
     }, (e) => {
-      console.error(e);
+      toast.error(`Unable to login. ${e}`, { autoClose: 8000, position: toast.POSITION.TOP_CENTER });
     });
   }
 
