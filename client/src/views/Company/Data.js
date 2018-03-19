@@ -17,12 +17,11 @@ class CompanyData extends Component {
   };
 
   render() {
-    let c = this.props.company;
     return (
       <div className="column">
         <div className="select is-rounded" onChange={this.monthChanged}>
-          <select>
-            <option disabled selected>Select Month</option>
+          <select defaultValue="Select Month">
+            <option disabled>Select Month</option>
             <option>January</option>
             <option>February</option>
             <option>March</option>
@@ -50,13 +49,13 @@ class CompanyData extends Component {
               </thead>
               <tbody className="is-hoverable">
                   {
-                      this.state.chartData.map((c, idx) => {
+                      this.state.chartData.map((d, idx) => {
                          return (
                             <tr key={idx}>
-                              <td>{ c.date }</td>
-                              <td>${ c.low }</td>
-                              <td>${ c.high }</td>
-                              <td><b>${ c.close }</b></td>
+                              <td>{ d.date }</td>
+                              <td>${ d.low }</td>
+                              <td>${ d.high }</td>
+                              <td><b>${ d.close }</b></td>
                             </tr>
                           )
                       })

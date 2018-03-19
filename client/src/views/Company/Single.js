@@ -9,7 +9,7 @@ class SingleCompany extends Component {
     constructor(props){
         super(props);
         this.state = {
-          company: {},
+          company: null,
           focusedTab: 0
         };
     }
@@ -31,6 +31,8 @@ class SingleCompany extends Component {
 
   render() {
     let c = this.state.company;
+    if (!c) return <div />;
+
     return (
       <div className="single-company">
         <Breadcrumb type="is-dark"/>
@@ -39,7 +41,7 @@ class SingleCompany extends Component {
             <div className="column is-3">
               <div className="box">
                 <figure className="image">
-                  <img src={`/logos/${ c.symbol }.svg`} alt="Company Logo" />
+                  { c.symbol && <img src={`/logos/${ c.symbol }.svg`} alt="Company Logo" /> }
                 </figure>
                 <hr></hr>
                 <p className="title is-size-4 has-text-centered">{ c.name }</p>
@@ -63,7 +65,7 @@ class SingleCompany extends Component {
                     </li>
                   </ul>
                 </div>
-                { this.tabIsActive(0) ? <Summary company={this.state.company} /> : <Data company={this.state.company} /> }
+                { this.tabIsActive(0) && this.state.company ? <Summary company={this.state.company} /> : <Data company={this.state.company} /> }
               </div>
             </div>
           </div>

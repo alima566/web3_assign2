@@ -10,13 +10,13 @@ class CompanySummary extends Component {
     };
   }
 
-  componentWillReceiveProps(newprops){
-    if (this.props.company !== newprops.company) {
-      axios.get(`/api/company/${newprops.company.symbol}/info/close`)
-      .then((r) => {
-        this.setState({ closeSummary: r.data });
-      })
-    }
+  componentDidMount(){
+    console.log("get", `/api/company/${this.props.company.symbol}/info/close`);
+    axios.get(`/api/company/${this.props.company.symbol}/info/close`)
+    .then((r) => {
+      console.log("mounted summary, got data", r.data);
+      this.setState({ closeSummary: r.data });
+    })
   }
 
   render() {
