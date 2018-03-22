@@ -53,13 +53,6 @@ class Header extends Component {
 
             <div className="navbar-end">
               <div className="navbar-item">
-                <Link to="/chat" className="button is-info">
-                  <span className="icon is-small">
-                    <i className="far fa-comments"></i>
-                  </span>
-                </Link>
-              </div>
-              <div className="navbar-item">
                 <div className="tags has-addons">
                   <span className="tag is-medium is-primary">{`${this.state.user.first} ${this.state.user.last}`}</span>
                   <Link to="/login" className="tag is-medium logout">

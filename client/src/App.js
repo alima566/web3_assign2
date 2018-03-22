@@ -15,6 +15,10 @@ import SingleUser from './views/Users/Single.js';
 import CompanyList from './views/Company/List.js';
 import SingleCompany from './views/Company/Single.js';
 import AboutUs from './views/About.js';
+import * as socketIOCtrl from './socketio_controller.js';
+import { Widget as ChatWidget } from 'react-chat-widget';
+
+socketIOCtrl.connect();
 
 class App extends Component {
   render() {
@@ -31,6 +35,13 @@ class App extends Component {
             <Route path="/login" exact component={Login} />
           </main>
           <ToastContainer />
+            <ChatWidget
+              handleNewUserMessage={socketIOCtrl.pushMessage}
+              title="Live Chat"
+              subtitle="Chat with all available users"
+              badge={ true }
+              senderPlaceHolder="💬 type your message ... "
+            />
         </div>
     );
   }

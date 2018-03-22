@@ -18,7 +18,7 @@ class Login extends Component {
       localStorage.setItem("user", JSON.stringify(r.data));
       this.props.history.push("/");
     }, (e) => {
-      toast.error(`Unable to login. ${e}`, { autoClose: 8000, position: toast.POSITION.TOP_CENTER });
+      toast.error(`Unable to authenticate user`, { autoClose: 8000, position: toast.POSITION.TOP_CENTER });
     });
   }
 
