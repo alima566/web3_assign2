@@ -11,16 +11,19 @@ const routes = [
 class Header extends Component {
   constructor(props){
     super(props);
-
     this.state = {
-      menuVisible: false,
-      user: JSON.parse(localStorage.getItem('user')) || { first: "First", last: "Last"}
+      menuVisible: false
     };
   }
+
+  logout = () => {
+    window.localStorage.removeItem('user');
+  };
 
   toggleMenu = () => this.setState({ menuVisible: !this.state.menuVisible });
 
   render() {
+    const usr = JSON.parse(window.localStorage.getItem('user')) || {};
     return (
       <div>
         <nav className="navbar is-fixed-top has-shadow">
@@ -54,8 +57,8 @@ class Header extends Component {
             <div className="navbar-end">
               <div className="navbar-item">
                 <div className="tags has-addons">
-                  <span className="tag is-medium is-primary">{`${this.state.user.first} ${this.state.user.last}`}</span>
-                  <Link to="/login" className="tag is-medium logout">
+                  <span className="tag is-medium is-primary">{`${usr.first} ${usr.last}`}</span>
+                  <Link to="/login" className="tag is-medium logout" onClick={this.logout}>
                     <i className="fas fa-sign-out-alt"></i>
                   </Link>
                 </div>

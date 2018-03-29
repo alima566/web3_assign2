@@ -15,7 +15,7 @@ class Login extends Component {
     e.preventDefault();
     axios.post('/api/user/login', this.state)
     .then((r) => {
-      localStorage.setItem("user", JSON.stringify(r.data));
+      window.localStorage.setItem("user", JSON.stringify(r.data));
       this.props.history.push("/");
     }, (e) => {
       toast.error(`Unable to authenticate user`, { autoClose: 8000, position: toast.POSITION.TOP_CENTER });

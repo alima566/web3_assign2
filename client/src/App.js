@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { Route } from 'react-router-dom';
+import { Route, Redirect, Switch } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
+import { withRouter } from 'react-router';
 
 //CSS
 import './App.css';
@@ -21,30 +22,38 @@ import { Widget as ChatWidget } from 'react-chat-widget';
 socketIOCtrl.connect();
 
 class App extends Component {
+
   render() {
+    const userLoggedIn = JSON.parse(window.localStorage.getItem('user')) !== null;
+    if (!userLoggedIn && this.props.location.pathname !== '/login') return <Redirect to="/login" />
     return (
         <div>
-          <Header />
+          { userLoggedIn && <Header /> }
           <main>
-            <Route path="/" exact component={Home} />
-            <Route path="/users" exact component={UserList} />
-            <Route path="/users/:id" exact component={SingleUser} />
-            <Route path="/companies" exact component={CompanyList} />
-            <Route path="/companies/:symbol" exact component={SingleCompany} />
-            <Route path="/about" exact component={AboutUs} />
-            <Route path="/login" exact component={Login} />
+            <Switch>
+              <Route path="/" exact component={Home} />
+              <Route path="/users" exact component={UserList} />
+              <Route path="/users/:id" exact component={SingleUser} />
+              <Route path="/companies" exact component={CompanyList} />
+              <Route path="/companies/:symbol" exact component={SingleCompany} />
+              <Route path="/about" exact component={AboutUs} />
+              <Route path="/login" exact component={Login} />
+              <Redirect to="/" />
+            </Switch>
           </main>
           <ToastContainer />
-            <ChatWidget
+            {
+              userLoggedIn && <ChatWidget
               handleNewUserMessage={socketIOCtrl.pushMessage}
               title="Live Chat"
               subtitle="Chat with all available users"
               badge={ true }
               senderPlaceHolder="💬 type your message ... "
             />
+          }
         </div>
     );
   }
 }
 
-export default App;
+export default withRouter(App);
