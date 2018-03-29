@@ -127,3 +127,14 @@ section.section {
 .home .notification.about {
     background: linear-gradient(150deg, #495affCC, #0acffeA6), url('https://placeimg.com/450/200/tech/grayscale') no-repeat center;
 }
+
+/* Fix for chat widget */
+.widget-container * { outline: none; }
+@media screen and (max-width: 800px){
+  .widget-container {
+    height: inherit !important;
+  }
+  .conversation-container {
+    height: 100vh !important;
+  }
+}
