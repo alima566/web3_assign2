@@ -22,7 +22,6 @@ import { Widget as ChatWidget } from 'react-chat-widget';
 socketIOCtrl.connect();
 
 class App extends Component {
-
   render() {
     const userLoggedIn = JSON.parse(window.localStorage.getItem('user')) !== null;
     if (!userLoggedIn && this.props.location.pathname !== '/login') return <Redirect to="/login" />
@@ -37,7 +36,7 @@ class App extends Component {
               <Route path="/companies" exact component={CompanyList} />
               <Route path="/companies/:symbol" exact component={SingleCompany} />
               <Route path="/about" exact component={AboutUs} />
-              <Route path="/login" exact component={Login} />
+              <Route path="/login" exact render={(props) => (userLoggedIn ? <Redirect to="/" /> : <Login {...props} /> )} />
               <Redirect to="/" />
             </Switch>
           </main>
