@@ -29,7 +29,7 @@ class Header extends Component {
         <nav className="navbar is-fixed-top has-shadow">
           <div className="navbar-brand">
             <span className="navbar-item">
-              <Link to="/"><img src="/logo.jpg" alt="Stockr" width="112" height="28" /></Link>
+              <Link to="/"><img src="/logo.png" alt="Stockr" width="112" height="28" /></Link>
             </span>
             <div className="navbar-burger burger" data-target="headerNavBar" onClick={this.toggleMenu}>
               <span></span>
