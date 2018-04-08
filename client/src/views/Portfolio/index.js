@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import axios from 'axios';
 
 import Breadcrumb from '../../components/Breadcrumb.js';
-import UserSummary from './Summary.js';
-import UserList from './Portfolio.js';
+import PortfolioSummary from './Summary.js';
+import PortfolioList from './List.js';
 
-class SingleUser extends Component {
+class UserPortfolio extends Component {
   constructor(props){
     super(props);
     this.state = {
@@ -42,11 +42,11 @@ class SingleUser extends Component {
               </a></li>
             </ul>
           </div>
-          { this.tabIsActive(0) ? <UserSummary user={ usr } /> : <UserList user={ usr } /> }
+          { this.tabIsActive(0) ? <PortfolioSummary user={ usr } /> : <PortfolioList user={ usr } /> }
         </section>
       </div>
     );
   }
 }
 
-export default SingleUser;
+export default UserPortfolio;

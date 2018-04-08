@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const routes = [
   { name: 'Home', path: '/', icon: 'fas fa-home' },
-  { name: 'Users', path: '/users', icon: 'fas fa-users' },
+  { name: 'Portfolio', path: '/portfolio', icon: 'fas fa-chart-pie' },
   { name: 'Companies', path: '/companies', icon: 'far fa-building' },
   { name: 'Visualizer', path: '/visualizer', icon: 'fas fa-chart-line' },
   { name: 'About', path: '/about', icon: 'fas fa-info-circle' }

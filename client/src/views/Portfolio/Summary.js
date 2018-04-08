@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
-class UserSummary extends Component {
+class PortfolioSummary extends Component {
     constructor(props){
         super(props);
         this.state = {
@@ -10,11 +10,11 @@ class UserSummary extends Component {
     }
 
     componentDidMount() {
-      axios.get(`/api/user/${this.props.user.id}/portfolio`)
+      axios.get(`/api/user/${this.props.user.id}/summary`)
       .then(r => {
           this.setState({ summary: r.data });
         }).catch(function (e) {
-           console.error(`Error retreiving user (${this.props.user.id})`, e);
+           console.error("Error retreiving user summary", e);
         });
     }
 
@@ -43,4 +43,4 @@ class UserSummary extends Component {
   }
 }
 
-export default UserSummary;
+export default PortfolioSummary;

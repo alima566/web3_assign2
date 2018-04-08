@@ -11,8 +11,7 @@ import 'bulma/css/bulma.css';
 import Header from './components/Header.js';
 import Login from './views/Login.js'
 import Home from './views/Home.js';
-import UserList from './views/Users/List.js';
-import SingleUser from './views/Users/Single.js';
+import UserPortfolio from './views/Portfolio/index.js';
 import CompanyList from './views/Company/List.js';
 import SingleCompany from './views/Company/Single.js';
 import AboutUs from './views/About.js';
@@ -24,7 +23,6 @@ socketIOCtrl.connect();
 
 class App extends Component {
   render() {
-    const usr = JSON.parse(window.localStorage.getItem('user')) || {};
     const userLoggedIn = JSON.parse(window.localStorage.getItem('user')) !== null;
     if (!userLoggedIn && this.props.location.pathname !== '/login') return <Redirect to="/login" />
     return (
@@ -34,8 +32,7 @@ class App extends Component {
             <Switch>
               <Route path="/" exact component={Home} />
               <Route path="/visualizer" exact component={Visualizer} />
-              <Route path="/users" exact component={UserList} />
-              <Route path={`/users/${usr.id}`} exact component={SingleUser} />
+              <Route path="/portfolio" exact component={UserPortfolio} />
               <Route path="/companies" exact component={CompanyList} />
               <Route path="/companies/:symbol" exact component={SingleCompany} />
               <Route path="/about" exact component={AboutUs} />

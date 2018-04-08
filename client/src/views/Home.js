@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 
 class Home extends Component {
   render() {
-    const usr = JSON.parse(window.localStorage.getItem('user')) || {};
     return (
       <div className="home">
         <section className="hero is-info is-bold is-medium">
@@ -17,7 +16,7 @@ class Home extends Component {
         </section>
         <section className="section container">
           <div className="columns">
-            <Link to={`/users/${usr.id}`} className="column">
+            <Link to="/portfolio" className="column">
               <div className="portfolio notification">
                 <h1 className="title is-3">Portfolio</h1>
                 <p className="subtitle is-7">View your personal portfolio</p>
