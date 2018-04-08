@@ -120,6 +120,18 @@ class AboutUs extends Component {
             <h2 className="title">Referenced Resources</h2>
               <div className="box content resource-list">
                 <div>
+                  <a href="https://github.com/Wolox/react-chat-widget" target="_blank" rel="noopener noreferrer"><h4 className="subtitle is-4">Wolox / react-chat-widget</h4></a>
+                </div>
+                <div>
+                  <a href="https://socket.io/" target="_blank" rel="noopener noreferrer"><h4 className="subtitle is-4">Socket.io</h4></a>
+                </div>
+                <div>
+                  <a href="http://recharts.org/en-US/" target="_blank" rel="noopener noreferrer"><h4 className="subtitle is-4">Recharts</h4></a>
+                </div>
+                <div>
+                  <a href="https://github.com/blakeembrey/pluralize" target="_blank" rel="noopener noreferrer"><h4 className="subtitle is-4">blakeembrey / pluralize</h4></a>
+                </div>
+                <div>
                   <a href="https://github.com/ReactTraining/react-router/blob/master/packages/react-router/docs/api/withRouter.md" target="_blank" rel="noopener noreferrer"><h4 className="subtitle is-4">React ▸ withRouter</h4></a>
                 </div>
                 <div>

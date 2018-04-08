@@ -25,10 +25,14 @@ class Visualizer extends Component {
   }
 
   monthChanged = (e) => {
+    let update = this.state.month !== '';
     this.setState({ month: e.target.value });
-    this.state.stocks.map((s, idx) => {
-      this.stockChanged(null, idx, s.symbol);
-    });
+
+    if (update) {
+      this.state.stocks.map((s, idx) => {
+        this.stockChanged(null, idx, s.symbol);
+      });
+    }
   }
 
   stockChanged = (e, index, sbl) => {
@@ -91,7 +95,7 @@ class Visualizer extends Component {
          <div className="container">
            <br></br>
            <br></br>
-           <ResponsiveContainer height={500}>
+           <ResponsiveContainer height={400}>
              <LineChart>
                <XAxis dataKey="date" type="category" allowDuplicatedCategory={false}/>
                <YAxis dataKey="close"/>
