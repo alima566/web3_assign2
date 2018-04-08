@@ -66,8 +66,17 @@ class AboutUs extends Component {
                 </div>
               </div>
             </div>
-
-            <hr></hr>
+            <br></br>
+            <div className="is-pulled-right field">
+              <a className="button is-medium is-dark" rel="noopener noreferrer" target="_blank" href="https://github.com/renatoniro/comp4513-assignment2">
+                <span className="icon">
+                  <i className="fab fa-github"></i>
+                </span>
+                <span>View Project on GitHub</span>
+              </a>
+            </div>
+            <br></br>
+            <br></br>
             <h2 className="title">Frameworks & Packages Used</h2>
             <div className="tile is-ancestor">
               <div className="tile is-parent">
@@ -100,9 +109,9 @@ class AboutUs extends Component {
               <div className="tile is-parent">
                 <a href="https://c9.io" target="_blank" rel="noopener noreferrer">
                   <article className="tile is-child is-warning notification">
-                    <img src="https://static.c9.io/nc-3.1.4109-2ffb85e2-wf/static/plugins/c9.profile/static/images/cloud9-logo.svg" alt="C9 Logo" />
-                    <p className="title">C9.io</p>
-                    <p className="subtitle">Development IDE</p>
+                    <img src="https://sass-lang.com/assets/img/logos/logo-b6e1ef6e.svg" alt="Sass Logo" />
+                    <p className="title">Syntactically Awesome Style Sheets</p>
+                    <p className="subtitle">CSS Preprocessor</p>
                   </article>
                 </a>
               </div>
