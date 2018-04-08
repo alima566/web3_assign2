@@ -23,6 +23,7 @@ socketIOCtrl.connect();
 
 class App extends Component {
   render() {
+    const usr = JSON.parse(window.localStorage.getItem('user')) || {};
     const userLoggedIn = JSON.parse(window.localStorage.getItem('user')) !== null;
     if (!userLoggedIn && this.props.location.pathname !== '/login') return <Redirect to="/login" />
     return (
@@ -32,7 +33,7 @@ class App extends Component {
             <Switch>
               <Route path="/" exact component={Home} />
               <Route path="/users" exact component={UserList} />
-              <Route path="/users/:id" exact component={SingleUser} />
+              <Route path={`/users/${usr.id}`} exact component={SingleUser} />
               <Route path="/companies" exact component={CompanyList} />
               <Route path="/companies/:symbol" exact component={SingleCompany} />
               <Route path="/about" exact component={AboutUs} />
