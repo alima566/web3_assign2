@@ -21,6 +21,7 @@ const connect = () => {
 
 const pushMessage = (m) => {
   io.emit(MESSAGE, m);
+  widgetResponse(m);
   console.warn("PUSH CHAT MESSAGE:", m);
 };
 
