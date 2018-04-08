@@ -16,6 +16,7 @@ import SingleUser from './views/Users/Single.js';
 import CompanyList from './views/Company/List.js';
 import SingleCompany from './views/Company/Single.js';
 import AboutUs from './views/About.js';
+import Visualizer from './views/Visualizer.js';
 import * as socketIOCtrl from './socketio_controller.js';
 import { Widget as ChatWidget } from 'react-chat-widget';
 
@@ -32,6 +33,7 @@ class App extends Component {
           <main>
             <Switch>
               <Route path="/" exact component={Home} />
+              <Route path="/visualizer" exact component={Visualizer} />
               <Route path="/users" exact component={UserList} />
               <Route path={`/users/${usr.id}`} exact component={SingleUser} />
               <Route path="/companies" exact component={CompanyList} />
