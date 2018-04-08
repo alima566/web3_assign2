@@ -132,9 +132,9 @@ section.section {
 .widget-container * { outline: none; }
 @media screen and (max-width: 800px){
   .widget-container {
-    height: inherit !important;
+    height: 100% !important;
   }
   .conversation-container {
-    height: 88vh !important;
+    height: 100% !important;
   }
 }
