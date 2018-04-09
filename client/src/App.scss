@@ -128,11 +128,11 @@ section.section {
     background: linear-gradient(150deg, #495affCC, #0acffeA6), url('https://placeimg.com/450/200/tech/grayscale') no-repeat center;
 }
 
-#select-stock {
+.select-stock {
   max-width: 24%
 }
 @media screen and (max-width: 800px) {
-  #select-stock {
+  .select-stock {
     max-width: 100%
   }
 }
