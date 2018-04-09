@@ -22,9 +22,13 @@ export const portfolioSummary = (req, res) => {
       { $group: { _id: null, totalOwned: { $sum: "$owned" }} }
     ], (aggErr, aggregate) => {
       if (aggErr) res.status(400).end("Cound not calculate User portfolio summary");
-      let summary = {};
+      let summary = [];
       items.map(i => {
-        summary[i.symbol] = parseFloat((i.owned / aggregate[0].totalOwned).toFixed(4));
+        summary.push(
+          { symbol: i.symbol,
+            percentage: parseFloat((i.owned / aggregate[0].totalOwned).toFixed(4))
+          }
+        );
       });
       res.json(summary);
     });
@@ -32,8 +36,36 @@ export const portfolioSummary = (req, res) => {
 };
 
 export const portfolioInfo = (req, res) => {
-  Portfolio.find({ 'user': req.params.id }, 'id symbol owned').exec((err, items) => {
-    if (err) res.status(400).end("Cound not retrieve User portfolio summary");
-    res.json(items);
+  Portfolio.aggregate([
+    { $match: { user: parseInt(req.params.id) } },
+    {
+      $lookup:
+         {
+           from: "companies",
+           localField: "symbol",
+           foreignField: "symbol",
+           as: "company"
+         }
+    },
+    { $unwind: "$company" },
+    // {
+    //   $lookup:
+    //      {
+    //        from: "prices",
+    //        localField: "symbol",
+    //        foreignField: "name",
+    //        as: "prices"
+    //      }
+    // },
+    { $project : { _id: 0, user: 0, symbol: 0, company: { sector: 0, subindustry: 0, address: 0, "date_added": 0, CIK: 0, frequency: 0, "_id": 0 } } },
+    { $addFields: { "currentValue": "abc" }}
+  ], (err, resp) => {
+    let obj = {
+      stocks: resp,
+      companyCount: 0,
+      stockCount: resp.length,
+      portfolioValue: 0.0
+    };
+    res.json(obj);
   });
 };
