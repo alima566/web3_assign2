@@ -1,6 +1,7 @@
 import mongoose from 'mongoose';
 import User from '../models/users';
 import Portfolio from '../models/portfolio';
+import Price from '../models/prices';
 import md5 from 'crypto-md5';
 
 export const login = (req, res) => {
@@ -48,24 +49,31 @@ export const portfolioInfo = (req, res) => {
          }
     },
     { $unwind: "$company" },
-    // {
-    //   $lookup:
-    //      {
-    //        from: "prices",
-    //        localField: "symbol",
-    //        foreignField: "name",
-    //        as: "prices"
-    //      }
-    // },
-    { $project : { _id: 0, user: 0, symbol: 0, company: { sector: 0, subindustry: 0, address: 0, "date_added": 0, CIK: 0, frequency: 0, "_id": 0 } } },
-    { $addFields: { "currentValue": "abc" }}
+    { $project : { _id: 0, user: 0, symbol: 0, company: { sector: 0, subindustry: 0, address: 0, "date_added": 0, CIK: 0, frequency: 0, "_id": 0 } } }
   ], (err, resp) => {
+    if (err || resp.length === 0) res.status(400).end("Cound not get user portfolio");
     let obj = {
       stocks: resp,
       companyCount: 0,
-      stockCount: resp.length,
+      stockCount: (resp) ? resp.length : 0,
       portfolioValue: 0.0
     };
-    res.json(obj);
+    let cacheCompany = {};
+    obj.stocks.map((s, idx) => {
+      if (!cacheCompany[s.company.symbol]){
+        cacheCompany[s.company.symbol] = 1;
+        obj.companyCount++;
+      }
+
+      Price.findOne({ name: s.company.symbol }).sort({"date": -1}).exec((err1, latest) => {
+        if (err1 || !latest ) res.status(400).end("Cound not get price data");
+        s.currentValue = (err) ? 0 : parseFloat((latest.close || 0 * s.owned).toFixed(2));
+        obj.portfolioValue += s.currentValue;
+        if (idx === obj.stocks.length - 1) {
+          res.json(obj);
+        }
+        return s;
+      });
+    });
   });
 };
