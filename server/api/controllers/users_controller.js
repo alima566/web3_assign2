@@ -3,6 +3,7 @@ import User from '../models/users';
 import Portfolio from '../models/portfolio';
 import Price from '../models/prices';
 import md5 from 'crypto-md5';
+import async from 'async';
 
 export const login = (req, res) => {
   User.findOne({ 'email': req.body.email }, 'id salt first_name last_name password').exec((err, usr) => {
@@ -59,7 +60,8 @@ export const portfolioInfo = (req, res) => {
       portfolioValue: 0.0
     };
     let cacheCompany = {};
-    obj.stocks.map((s, idx) => {
+
+    async.map(obj.stocks, (s, done) => {
       if (!cacheCompany[s.company.symbol]){
         cacheCompany[s.company.symbol] = 1;
         obj.companyCount++;
@@ -67,13 +69,13 @@ export const portfolioInfo = (req, res) => {
 
       Price.findOne({ name: s.company.symbol }).sort({"date": -1}).exec((err1, latest) => {
         if (err1 || !latest ) res.status(400).end("Cound not get price data");
-        s.currentValue = (err) ? 0 : parseFloat((latest.close || 0 * s.owned).toFixed(2));
-        obj.portfolioValue += s.currentValue;
-        if (idx === obj.stocks.length - 1) {
-          res.json(obj);
-        }
-        return s;
+        s.currentValue = (err1) ? 0 : parseFloat(((latest.close || 0) * s.owned).toFixed(2));
+        obj.portfolioValue = parseFloat((obj.portfolioValue + s.currentValue).toFixed(2));
+        done(null, s);
       });
+    }, (err, results) => {
+      if (err) res.status(400).end("Cound not get user portfolio");
+      res.json(obj);
     });
   });
 };

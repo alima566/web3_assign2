@@ -120,6 +120,9 @@ class AboutUs extends Component {
             <h2 className="title">Referenced Resources</h2>
               <div className="box content resource-list">
                 <div>
+                  <a href="https://github.com/caolan/async" target="_blank" rel="noopener noreferrer"><h4 className="subtitle is-4">caolan / async</h4></a>
+                </div>
+                <div>
                   <a href="https://github.com/Wolox/react-chat-widget" target="_blank" rel="noopener noreferrer"><h4 className="subtitle is-4">Wolox / react-chat-widget</h4></a>
                 </div>
                 <div>

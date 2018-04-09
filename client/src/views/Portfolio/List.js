@@ -46,10 +46,10 @@ class PortfolioList extends Component {
         <table className="table is-fullwidth">
           <thead>
             <tr>
-              <th onClick={ () => this.sortBy('symbol') }>Symbol</th>
-              <th onClick={ () => this.sortBy('name') }>Name</th>
-              <th onClick={ () => this.sortBy('number') }>Number Owned</th>
-              <th onClick={ () => this.sortBy('amount') }>Current Value</th>
+              <th onClick={ () => this.sortBy('company.symbol') }>Symbol</th>
+              <th onClick={ () => this.sortBy('company.name') }>Name</th>
+              <th onClick={ () => this.sortBy('owned') }>Number Owned</th>
+              <th onClick={ () => this.sortBy('currentValue') }>Current Value</th>
             </tr>
           </thead>
           <tbody className="is-hoverable">
