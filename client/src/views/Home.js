@@ -30,7 +30,7 @@ class Home extends Component {
             </Link>
             <Link to="/visualizer" className="column">
               <div className="stocks notification">
-                <h1 className="title is-3">Stock Visializer</h1>
+                <h1 className="title is-3">Stock Visualizer</h1>
                 <p className="subtitle is-7">Easily visualize your Stock options</p>
               </div>
             </Link>

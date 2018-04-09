@@ -28,7 +28,7 @@ class Login extends Component {
         <div className="hero-body">
           <div className="container has-text-centered">
             <div className="column is-4 is-offset-4">
-              <img src="/logo.png" />
+              <img src="/logo.png" alt="Logo" />
               <h3 className="title has-text-grey">Login</h3>
               <p className="subtitle has-text-grey">Please login to proceed.</p>
               <div className="box">

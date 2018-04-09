@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import formatCurrency from 'format-currency';
 
 class PortfolioList extends Component {
   constructor(props){
@@ -40,7 +41,7 @@ class PortfolioList extends Component {
   }
 
   render() {
-    let r = this.props.stocks;
+    let format = { format: '%s%v', symbol: '$' };
     return (
       <div className="user-portfolio box content">
         <table className="table is-fullwidth">
@@ -54,13 +55,16 @@ class PortfolioList extends Component {
           </thead>
           <tbody className="is-hoverable">
             {
-              r.map((s, idx) => {
+              this.props.stocks.map((s, idx) => {
                 return (
                   <tr key={idx}>
                     <td><Link to={`/companies/${s.company.symbol}`}>{ s.company.symbol }</Link></td>
                     <td><Link to={`/companies/${s.company.symbol}`}>{ s.company.name }</Link></td>
                     <td>{ s.owned }</td>
-                    <td>{ s.currentValue }</td>
+                    {
+                      // Formats the current value to include commas.
+                    }
+                    <td>{ formatCurrency(s.currentValue, format) }</td>
                   </tr>
                 )
               })

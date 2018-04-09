@@ -69,8 +69,8 @@ export const portfolioInfo = (req, res) => {
 
       Price.findOne({ name: s.company.symbol }).sort({"date": -1}).exec((err1, latest) => {
         if (err1 || !latest ) res.status(400).end("Cound not get price data");
-        s.currentValue = (err1) ? 0 : parseFloat(((latest.close || 0) * s.owned).toFixed(2));
-        obj.portfolioValue = parseFloat((obj.portfolioValue + s.currentValue).toFixed(2));
+        s.currentValue = (err1) ? 0 : parseFloat(((latest.close || 0) * s.owned));
+        obj.portfolioValue = parseFloat((obj.portfolioValue + s.currentValue));
         done(null, s);
       });
     }, (err, results) => {
