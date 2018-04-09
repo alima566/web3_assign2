@@ -107,7 +107,7 @@ class AboutUs extends Component {
                 </a>
               </div>
               <div className="tile is-parent">
-                <a href="https://c9.io" target="_blank" rel="noopener noreferrer">
+                <a href="https://sass-lang.com/" target="_blank" rel="noopener noreferrer">
                   <article className="tile is-child is-warning notification">
                     <img src="https://sass-lang.com/assets/img/logos/logo-b6e1ef6e.svg" alt="Sass Logo" />
                     <p className="title">Syntactically Awesome Style Sheets</p>
