@@ -77,7 +77,7 @@ class Visualizer extends Component {
              {
                Array.apply(null, Array(3)).map((i, idx) => {
                  return (
-                   <div key={idx} className="navbar-item is-fluid">
+                   <div key={idx} className="navbar-item is-fluid" id="select-stock">
                        <div className="select is-rounded" onChange={ (e) => this.stockChanged(e, idx)}>
                          <select defaultValue="Select Stock">
                            <option disabled>Select Stock</option>
