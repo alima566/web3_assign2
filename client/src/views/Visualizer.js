@@ -52,6 +52,7 @@ class Visualizer extends Component {
   render() {
     return (
       <div>
+      <Breadcrumb />
         <nav className="navbar has-shadow is-primary" aria-label="breadcrumbs">
           <b className="navbar-item is-fluid">Stock Visualizer</b>
            <div className="navbar-item is-fluid">
