@@ -15,7 +15,6 @@ class PortfolioSummary extends Component {
 
   render() {
     let r = this.props.summary;
-    console.log(r);
     return (
       <div className="user-details box">
         <div className="card-content">

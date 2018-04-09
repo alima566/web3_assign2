@@ -41,7 +41,6 @@ class PortfolioList extends Component {
 
   render() {
     let r = this.props.stocks;
-    console.log(r);
     return (
       <div className="user-portfolio box content">
         <table className="table is-fullwidth">
