@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
-import userPortfolio from '../../data/userStockPortfolio.json';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
 
 class PortfolioList extends Component {
   constructor(props){
     super(props);
     this.state = {
-      stocks: [],
+      stocks: {},
       sort: {
         symbol: "DESC",
         numberOwned: "DESC",
@@ -16,13 +14,8 @@ class PortfolioList extends Component {
     };
   }
 
-  componentDidMount(){
-    axios.get(`/api/user/${this.props.user.id}/portfolio`)
-    .then(r => {
-      this.sortBy('symbol', r.data);
-    }).catch(function (e) {
-      console.error("Error retreiving user portfolio", e);
-    });
+  componentWillReceiveProps (nextProps) {
+    this.setState({ stocks: nextProps.stocks })
   }
 
   sortBy = (param, sourceArray) => {
@@ -30,7 +23,7 @@ class PortfolioList extends Component {
     let order = this.state.sort[param] === "ASC" ? "DESC" : "ASC";
 
     delta.sort[param] = order;
-    delta.stocks = (sourceArray || this.state.stocks).sort((a, b) => {
+    delta.stocks = (sourceArray || this.props.stocks).sort((a, b) => {
       //Handle Numbers
       if (typeof a[param] === "number") {
         return (order === "ASC")
@@ -47,6 +40,8 @@ class PortfolioList extends Component {
   }
 
   render() {
+    let r = this.props.stocks;
+    console.log(r);
     return (
       <div className="user-portfolio box content">
         <table className="table is-fullwidth">
@@ -54,19 +49,19 @@ class PortfolioList extends Component {
             <tr>
               <th onClick={ () => this.sortBy('symbol') }>Symbol</th>
               <th onClick={ () => this.sortBy('name') }>Name</th>
-              <th onClick={ () => this.sortBy('owned') }>Number Owned</th>
+              <th onClick={ () => this.sortBy('number') }>Number Owned</th>
               <th onClick={ () => this.sortBy('amount') }>Current Value</th>
             </tr>
           </thead>
           <tbody className="is-hoverable">
             {
-              this.state.stocks.map((s, idx) => {
+              r.map((s, idx) => {
                 return (
                   <tr key={idx}>
-                    <td><Link to={`/companies/${s.symbol}`}>{ s.symbol }</Link></td>
-                    <td><Link to={`/companies/${s.symbol}`}>{ 'name' }</Link></td>
+                    <td><Link to={`/companies/${s.company.symbol}`}>{ s.company.symbol }</Link></td>
+                    <td><Link to={`/companies/${s.company.symbol}`}>{ s.company.name }</Link></td>
                     <td>{ s.owned }</td>
-                    <td>{ s.value }</td>
+                    <td>{ s.currentValue }</td>
                   </tr>
                 )
               })

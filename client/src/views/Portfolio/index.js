@@ -10,6 +10,9 @@ class UserPortfolio extends Component {
     super(props);
     this.state = {
       user: {},
+      summary: {
+        stocks:[]
+      },
       focusedTab: 0
     };
   }
@@ -22,8 +25,17 @@ class UserPortfolio extends Component {
     this.setState({ focusedTab: tab });
   };
 
+  componentDidMount() {
+    const usr = JSON.parse(window.localStorage.getItem('user')) || {};
+    axios.get(`/api/user/${usr.id}/portfolio`)
+    .then(r => {
+        this.setState({ summary: r.data });
+      }).catch(function (e) {
+         console.error("Error retreiving user summary", e);
+      });
+  }
+
   render() {
-    let u = this.state.user;
     const usr = JSON.parse(window.localStorage.getItem('user')) || {};
     return (
       <div>
@@ -42,7 +54,7 @@ class UserPortfolio extends Component {
               </a></li>
             </ul>
           </div>
-          { this.tabIsActive(0) ? <PortfolioSummary user={ usr } /> : <PortfolioList user={ usr } /> }
+          { this.tabIsActive(0) ? <PortfolioSummary summary={ this.state.summary } /> : <PortfolioList stocks={ this.state.summary.stocks } /> }
         </section>
       </div>
     );

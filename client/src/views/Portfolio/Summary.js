@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import { ResponsiveContainer, BarChart, Bar, Tooltip, XAxis, YAxis } from 'recharts';
 
 class PortfolioSummary extends Component {
@@ -10,32 +9,27 @@ class PortfolioSummary extends Component {
         };
     }
 
-    componentDidMount() {
-      axios.get(`/api/user/${this.props.user.id}/portfolio`)
-      .then(r => {
-          this.setState({ summary: r.data });
-        }).catch(function (e) {
-           console.error("Error retreiving user summary", e);
-        });
+    componentWillReceiveProps (nextProps) {
+      this.setState({ summary: nextProps.summary })
     }
 
   render() {
-    let r = this.state.summary;
+    let r = this.props.summary;
     console.log(r);
     return (
       <div className="user-details box">
         <div className="card-content">
             <p className="header-field is-size-5 is-size-6-mobile">
               <i className="fas fa-hashtag"></i>&nbsp;
-              <span>Total Number of Companies: { r.length }</span>
+              <span>Total Number of Companies: { r.companyCount }</span>
             </p>
             <p className="header-field is-size-5 is-size-6-mobile">
               <i className="fas fa-chart-line"></i>&nbsp;
-              <span>Total Number of Stocks: {  }</span>
+              <span>Total Number of Stocks: { r.stockCount }</span>
             </p>
             <p className="header-field is-size-5 is-size-6-mobile">
               <i className="fas fa-dollar-sign"></i>&nbsp;
-              <span>Current Worth: {  }</span>
+              <span>Current Worth: { r.portfolioValue }</span>
             </p>
             <br></br>
              </div>
