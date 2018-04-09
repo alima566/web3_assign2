@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { ResponsiveContainer, BarChart, Bar, Tooltip, XAxis, YAxis } from 'recharts';
 
 class PortfolioSummary extends Component {
     constructor(props){
@@ -10,7 +11,7 @@ class PortfolioSummary extends Component {
     }
 
     componentDidMount() {
-      axios.get(`/api/user/${this.props.user.id}/summary`)
+      axios.get(`/api/user/${this.props.user.id}/portfolio`)
       .then(r => {
           this.setState({ summary: r.data });
         }).catch(function (e) {
