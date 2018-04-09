@@ -46,7 +46,7 @@ class App extends Component {
               handleNewUserMessage={socketIOCtrl.pushMessage}
               title="Live Chat"
               subtitle="Chat with all available users"
-              badge={ true }
+              badge={ socketIOCtrl.unread_messages }
               senderPlaceHolder="💬 type your message ... "
             />
           }

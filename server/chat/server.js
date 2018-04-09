@@ -9,6 +9,11 @@ module.exports = function (app) {
     socket.on('user_logged_in', function(usr){
       console.log(`${usr.first} ${usr.last} logged in`);
     });
+
+    socket.on('message_push', function(obj){
+      console.log(`Received message: ${obj.message}`);
+      socket.broadcast.emit('message_rcv', obj);
+    });
   });
 
   app.set('socketio', io);
