@@ -1,10 +1,7 @@
-@import "bulma/sass/utilities/initial-variables";
-@import "bulma/sass/utilities/functions";
-
+@import "bulma/sass/utilities/_all";
 //Add Bulma Overrides
 $primary: #3180fb;
-$primary-invert: $white;
-
+$primary-invert: white;
 @import "bulma/bulma";
 
 // App Styling
@@ -167,7 +164,7 @@ section.section {
     margin-bottom: 10px;
 
     .message {
-      background-color: $white;
+      background-color: white;
       .client {
         background-color: adjust-hue( $primary, 8% );
         color: $primary-invert;
