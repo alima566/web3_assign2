@@ -187,7 +187,7 @@ section.section {
     margin-top: 0;
   }
   @media screen and (max-width: 800px) {
-    height: auto;
+    height: inherit !important;
     width: auto;
     .conversation-container {
       height: 100vh;
