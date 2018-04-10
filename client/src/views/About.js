@@ -120,6 +120,24 @@ class AboutUs extends Component {
             <h2 className="title">Referenced Resources</h2>
               <div className="box content resource-list">
                 <div>
+                  <a href="https://momentjs.com/" target="_blank" rel="noopener noreferrer"><h4 className="subtitle is-4">Moment</h4></a>
+                </div>
+                <div>
+                  <a href="https://github.com/Automattic/mongoose" target="_blank" rel="noopener noreferrer"><h4 className="subtitle is-4">Automattic / mongoose</h4></a>
+                </div>
+                <div>
+                  <a href="https://github.com/jtblin/crypto-md5" target="_blank" rel="noopener noreferrer"><h4 className="subtitle is-4">jtblin / crypto-md5</h4></a>
+                </div>
+                <div>
+                  <a href="https://github.com/fkhadra/react-toastify" target="_blank" rel="noopener noreferrer"><h4 className="subtitle is-4">fkhadra / react-toastify</h4></a>
+                </div>
+                <div>
+                  <a href="https://github.com/axios/axios" target="_blank" rel="noopener noreferrer"><h4 className="subtitle is-4">Axios</h4></a>
+                </div>
+                <div>
+                  <a href="https://github.com/exodusmovement/format-num" target="_blank" rel="noopener noreferrer"><h4 className="subtitle is-4">ExodusMovement / format-num</h4></a>
+                </div>
+                <div>
                   <a href="https://github.com/caolan/async" target="_blank" rel="noopener noreferrer"><h4 className="subtitle is-4">caolan / async</h4></a>
                 </div>
                 <div>
