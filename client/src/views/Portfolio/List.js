@@ -6,17 +6,18 @@ class PortfolioList extends Component {
   constructor(props){
     super(props);
     this.state = {
-      stocks: {},
+      stocks: [],
       sort: {
-        symbol: "DESC",
-        numberOwned: "DESC",
-        currentVal: "ASC"
+        "company.symbol": "DESC",
+        "company.name": "DESC",
+        "owned": "DESC",
+        "currentValue": "ASC"
       }
     };
   }
 
-  componentWillReceiveProps (nextProps) {
-    this.setState({ stocks: nextProps.stocks })
+  componentDidMount(){
+    this.sortBy('currentValue');
   }
 
   sortBy = (param, sourceArray) => {
@@ -24,17 +25,21 @@ class PortfolioList extends Component {
     let order = this.state.sort[param] === "ASC" ? "DESC" : "ASC";
 
     delta.sort[param] = order;
-    delta.stocks = (sourceArray || this.props.stocks).sort((a, b) => {
+    delta.stocks = this.props.stocks.sort((a, b) => {
+      let comps = param.split(".");
+      let l1 = comps[0];
+      let l2 = comps[1];
+
       //Handle Numbers
       if (typeof a[param] === "number") {
         return (order === "ASC")
-        ? (a[param] - b[param])
-        : (b[param] - a[param]);
+        ? (l2 ? (a[l1][l2] - b[l1][l2]) : (a[l1] - b[l1]))
+        : (l2 ? (b[l1][l2] - a[l1][l2]) : (b[l1] - a[l1]));
       }
 
       return (order === "ASC")
-      ? (a[param]).localeCompare(b[param])
-      : (b[param]).localeCompare(a[param]);
+      ? (l2 ? (a[l1][l2].localeCompare(b[l1][l2])) : (a[l1].localeCompare(b[l1])))
+      : (l2 ? (b[l1][l2].localeCompare(a[l1][l2])) : (b[l1].localeCompare(a[l1])));
     });
 
     this.setState(delta);
@@ -55,15 +60,12 @@ class PortfolioList extends Component {
           </thead>
           <tbody className="is-hoverable">
             {
-              this.props.stocks.map((s, idx) => {
+              this.state.stocks.map((s, idx) => {
                 return (
                   <tr key={idx}>
                     <td><Link to={`/companies/${s.company.symbol}`}>{ s.company.symbol }</Link></td>
                     <td><Link to={`/companies/${s.company.symbol}`}>{ s.company.name }</Link></td>
                     <td>{ s.owned }</td>
-                    {
-                      // Formats the current value to include commas.
-                    }
                     <td>{ formatCurrency(s.currentValue, format) }</td>
                   </tr>
                 )
