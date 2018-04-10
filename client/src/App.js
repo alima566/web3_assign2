@@ -19,7 +19,7 @@ import Visualizer from './views/Visualizer.js';
 import * as socketIOCtrl from './socketio_controller.js';
 import { Widget as ChatWidget } from 'react-chat-widget';
 
-socketIOCtrl.connect();
+socketIOCtrl.connectSocket();
 
 class App extends Component {
   render() {
