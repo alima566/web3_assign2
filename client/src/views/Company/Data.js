@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import formatCurrency from 'format-currency';
 
 class CompanyData extends Component {
   constructor(props){
@@ -17,6 +18,7 @@ class CompanyData extends Component {
   };
 
   render() {
+    let format = { format: '%s%v', symbol: '$' };
     return (
       <div className="column">
         <div className="select is-rounded" onChange={this.monthChanged}>
@@ -53,9 +55,9 @@ class CompanyData extends Component {
                          return (
                             <tr key={idx}>
                               <td>{ d.date }</td>
-                              <td>${ d.low }</td>
-                              <td>${ d.high }</td>
-                              <td><b>${ d.close }</b></td>
+                              <td>{ formatCurrency(d.low, format) }</td>
+                              <td>{ formatCurrency(d.high, format) }</td>
+                              <td><b>{ formatCurrency(d.close, format) }</b></td>
                             </tr>
                           )
                       })

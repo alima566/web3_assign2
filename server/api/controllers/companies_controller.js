@@ -69,10 +69,10 @@ const getMonthInfo = (req, res) => {
       return res.json(prices.map(p => ({
         date: p.date,
         volume: p.volume,
-        open: parseFloat(p.open.toFixed(2)),
-        high: parseFloat(p.high.toFixed(2)),
-        low: parseFloat(p.low.toFixed(2)),
-        close: parseFloat(p.close.toFixed(2))
+        open: parseFloat(p.open),
+        high: parseFloat(p.high),
+        low: parseFloat(p.low),
+        close: parseFloat(p.close)
       }
     )))
   });
