@@ -54,7 +54,7 @@ class Visualizer extends Component {
     return (
       <div className="visualizer">
       <Breadcrumb />
-        <nav className="navbar has-shadow is-primary" aria-label="breadcrumbs">
+        <nav className="navbar has-shadow" aria-label="breadcrumbs">
            <div className="navbar-item is-fluid">
              <div className="select is-rounded" onChange={this.monthChanged}>
                <select defaultValue="Select Month">

@@ -5,6 +5,8 @@
 $primary: #3180fb;
 $primary-invert: $white;
 
+$linkedin: #0077B5;
+
 @import "bulma/bulma";
 
 // App Styling
@@ -35,6 +37,10 @@ body {
 .visualizer {
   nav.breadcrumb {
     margin-bottom: 0px;
+  }
+
+  nav.navbar:not(.breadcrumb) {
+    background-color: $primary;
   }
 }
 
@@ -94,7 +100,7 @@ section.section {
 .about-us {
   i.linkedin {
       font-size: 1.5rem;
-      color: #0077B5;
+      color: $linkedin;
   }
   .tile img {
       margin-bottom: 15px;
@@ -109,11 +115,11 @@ section.section {
       color: #ccc;
   }
   a:hover {
-      color: white;
+      color: $white;
   }
 }
 .breadcrumb.is-dark li.is-active a {
-    color: white;
+    color: $white;
     font-weight: 500;
 }
 
@@ -122,7 +128,7 @@ section.section {
 }
 
 .home .notification {
-    color: white;
+    color: $white;
     height: 200px;
     padding-top: 20%;
     padding-left: 8%;
