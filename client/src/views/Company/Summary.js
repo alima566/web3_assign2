@@ -11,7 +11,6 @@ class CompanySummary extends Component {
   }
 
   componentDidMount(){
-    console.log("get", `/api/company/${this.props.company.symbol}/info/close`);
     axios.get(`/api/company/${this.props.company.symbol}/info/close`)
     .then((r) => {
       console.log("mounted summary, got data", r.data);
