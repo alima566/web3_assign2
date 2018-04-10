@@ -17,7 +17,7 @@ const connect = () => {
   });
 
   io.on(MESSAGE_RCV, (obj) => {
-    renderCustomComponent("span", { children: obj.user.first});
+    renderCustomComponent("span", { children: `${obj.user.first} ${obj.user.last}`, className: "username" });
     widgetResponse(obj.message);
     unread_messages += 1;
   });
