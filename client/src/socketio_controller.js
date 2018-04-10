@@ -1,6 +1,6 @@
 import socketIO from 'socket.io-client';
 import { toast } from 'react-toastify';
-import { addResponseMessage as widgetResponse, renderCustomComponent, toggleWidget } from 'react-chat-widget';
+import { addResponseMessage as widgetResponse, renderCustomComponent } from 'react-chat-widget';
 import React from 'react';
 
 const io = socketIO();
