@@ -2,10 +2,17 @@
 @import "bulma/sass/utilities/functions";
 
 //Add Bulma Overrides
+
+//Colours
 $primary: #3180fb;
 $primary-invert: $white;
-
 $linkedin: #0077B5;
+
+//Home page images
+$portfolio-img: 'https://placeimg.com/450/200/people/grayscale';
+$company-img: 'https://static.pexels.com/photos/264594/pexels-photo-264594.jpeg';
+$stocks-img: 'https://static.pexels.com/photos/69760/pexels-photo-69760.jpeg';
+$about-img: 'https://placeimg.com/450/200/tech/grayscale';
 
 @import "bulma/bulma";
 
@@ -138,16 +145,16 @@ section.section {
 
 .home {
    .notification.portfolio {
-    background: linear-gradient(150deg, #6e45e2CC, #88d3ceA6), url('https://placeimg.com/450/200/people/grayscale') no-repeat center;
+    background: linear-gradient(150deg, #6e45e2CC, #88d3ceA6), url($portfolio-img) no-repeat center;
   }
   .notification.company {
-      background: linear-gradient(150deg, #abecd6CC, #fbed96A6), url('https://static.pexels.com/photos/264594/pexels-photo-264594.jpeg') no-repeat center;
+      background: linear-gradient(150deg, #abecd6CC, #fbed96A6), url($company-img) no-repeat center;
   }
   .notification.stocks {
-      background: linear-gradient(150deg, #ff0844CC, #ffb199A6), url('https://static.pexels.com/photos/69760/pexels-photo-69760.jpeg') no-repeat center;
+      background: linear-gradient(150deg, #ff0844CC, #ffb199A6), url($stocks-img) no-repeat center;
   }
   .notification.about {
-      background: linear-gradient(150deg, #495affCC, #0acffeA6), url('https://placeimg.com/450/200/tech/grayscale') no-repeat center;
+      background: linear-gradient(150deg, #495affCC, #0acffeA6), url($about-img no-repeat center;
   }
 }
 
