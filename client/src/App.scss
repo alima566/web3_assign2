@@ -3,8 +3,9 @@
 
 //Add Bulma Overrides
 $primary: #3180fb;
+$primary-invert: $white;
 
-@import "bulma/bulma.sass";
+@import "bulma/bulma";
 
 // App Styling
 html {
@@ -28,6 +29,12 @@ body {
       thead tr:hover {
           background-color: inherit;
       }
+  }
+}
+
+.visualizer {
+  nav.breadcrumb {
+    margin-bottom: 0px;
   }
 }
 
