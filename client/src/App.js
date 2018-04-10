@@ -48,6 +48,7 @@ class App extends Component {
               subtitle="Chat with all available users"
               badge={ socketIOCtrl.unread_messages }
               senderPlaceHolder="💬 type your message ... "
+              profileAvatar={"https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg"}
             />
           }
         </div>
