@@ -54,7 +54,7 @@ class UserPortfolio extends Component {
               </a></li>
             </ul>
           </div>
-          { this.tabIsActive(0) ? <PortfolioSummary summary={ this.state.summary } /> : <PortfolioList stocks={ this.state.summary.stocks } /> }
+          { this.tabIsActive(0) ? <PortfolioSummary user={ usr } summary={ this.state.summary } /> : <PortfolioList stocks={ this.state.summary.stocks } /> }
         </section>
       </div>
     );
