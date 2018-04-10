@@ -19,6 +19,7 @@ const connect = () => {
   io.on(MESSAGE_RCV, (obj) => {
     renderCustomComponent("span", { children: `${obj.user.first} ${obj.user.last}`, className: "username" });
     widgetResponse(obj.message);
+    toast(<b>`${obj.user.first} said:`</b>` ${obj.message}`, { autoClose: 8000 })
     unread_messages += 1;
   });
 }

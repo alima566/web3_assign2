@@ -31,6 +31,7 @@ class Visualizer extends Component {
     if (update) {
       this.state.stocks.map((s, idx) => {
         this.stockChanged(null, idx, s.symbol);
+        return null;
       });
     }
   }
