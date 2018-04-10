@@ -177,6 +177,9 @@ section.section {
       span, h4 {
         color: $primary-invert;
       }
+      button.close-button {
+        background-color: $primary;
+      }
       background-color: $primary;
     }
   }
